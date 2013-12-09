@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ATD9.Win8.JS.WeatherApp</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <!-- ATD9.Win8.JS.WeatherApp references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+    <script src="Scripts/require.js" data-main="js/app.js"></script>
+</head>
+<body>
+    <div class="win-ui-light appGrid">
+        <header aria-label="Header content" role="banner">
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="win-type-xx-large" tabindex="0"><span class="pagetitle">Weather forecast</span></span>
+            </h1>
+        </header>
+        <div class="appViewContentMask">
+            <div class="appViewContent">
+                <div class="search-area">
+                    <input data-bind="value: city" class="input-box"/>
+                    <input data-bind="click: getForecast" type="button" value="Search" class="search-button"/>
+                </div>
+                
+                <progress data-bind="visible: isLoading"></progress>
+
+                <div class="tenDayPage" data-bind="foreach: forecast">
+                    <div class="tenDayGrid">
+                        <div class="win-type-x-large tenDayDate" data-bind="html: date">
+                        </div>
+                        <div class="tenDayImg">
+                            <img data-bind="attr: {src: 'http://api.openweathermap.org/img/w/' + icon() + '.png'}" />
+                        </div>
+                        <div class="win-type-x-large tenDayHighLow">
+                            <span data-bind="text: temp_max"></span> &#x2103;
+                            <span>/</span>
+                            <span data-bind="text: temp_min"></span> &#x2103;
+                        </div>
+                        <div class="tenDayFeelsLike">
+                            <span>Feels like </span>
+                            <span data-bind="text: temp"></span> &#x2103;
+                        </div>
+                        <div class="tenDayHumidity">
+                            <span>Humidity </span>
+                            <span data-bind="text: humidity"></span>
+                        </div>
+                        <div class="tenDayDescription">
+                            <span data-bind="text: description"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
